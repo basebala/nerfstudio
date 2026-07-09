@@ -101,7 +101,7 @@ RUN export TORCH_CUDA_ARCH_LIST="$(echo "$CUDA_ARCHITECTURES" | tr ';' '\n' | aw
     pip install --upgrade setuptools && \
     pip install --no-cache-dir --force-reinstall torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118 && \
     GSPLAT_VERSION="$(sed -n 's/.*gsplat==\s*\([^," '"'"']*\).*/\1/p' /tmp/nerfstudio/pyproject.toml)" && \
-    pip install --no-cache-dir git+https://github.com/nerfstudio-project/gsplat.git@v${GSPLAT_VERSION} && \
+    pip install --no-cache-dir --no-build-isolation git+https://github.com/nerfstudio-project/gsplat.git@v${GSPLAT_VERSION} && \
     pip install --no-cache-dir /tmp/nerfstudio 'numpy<2.0.0' && \
     rm -rf /tmp/nerfstudio
 
